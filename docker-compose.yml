@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build: .
+    ports:
+      - "${APP_HOST_PORT}:${APP_CONTAINER_PORT}"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - DATABASE_URL=${DATABASE_URL}
+      - POSTGRES_CONTAINER_PORT=${POSTGRES_CONTAINER_PORT}
+    depends_on:
+      - postgres-db
+    command: ./entrypoint.sh
+
+  postgres-db:
+    image: postgres:13
+    ports:
+      - "${POSTGRES_HOST_PORT}:${POSTGRES_CONTAINER_PORT}"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}

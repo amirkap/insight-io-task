@@ -1,3 +1,12 @@
+"""
+This module contains utility resources used across the application.
+
+Resources:
+    CHAT_COMPLETION_SYSTEM_PROMPT (str): A system prompt for guiding OpenAI chat completion model.
+
+"""
+
+
 CHAT_COMPLETION_SYSTEM_PROMPT = """
 You are an intelligent and knowledgeable assistant designed to help users with general questions.
 Your goal is to provide accurate, clear, and concise answers to a wide range of queries.

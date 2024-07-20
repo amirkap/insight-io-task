@@ -6,7 +6,16 @@ main = Blueprint('main', __name__)
 
 
 @main.route('/ask', methods=['POST'])
-def ask_question():
+def ask():
+    """
+    Endpoint to ask a question and get an answer.
+
+    This endpoint receives a JSON payload with a 'question' key, sends the question to the OpenAI API,
+    stores the question and answer in the database, and returns the question and answer in a JSON response.
+
+    Returns:
+        Response: JSON response containing the question and answer.
+    """
     data = request.get_json()
     question_text = data.get('question')
 

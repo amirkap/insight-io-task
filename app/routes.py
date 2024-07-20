@@ -19,6 +19,9 @@ def ask():
     data = request.get_json()
     question_text = data.get('question')
 
+    if not question_text or not isinstance(question_text, str):
+        return jsonify({'error': 'Bad Request', 'message': 'Missing or invalid "question" field in JSON payload'}), 400
+
     openai_client = OpenAIClient()
     answer_text = openai_client.ask_question(question_text)
 

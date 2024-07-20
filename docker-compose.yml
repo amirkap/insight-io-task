@@ -12,6 +12,7 @@ services:
     depends_on:
       - postgres-db
     command: ./entrypoint.sh
+    restart: always
 
   postgres-db:
     image: postgres:13
@@ -21,3 +22,4 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
+    restart: always
